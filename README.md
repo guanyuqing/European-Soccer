@@ -8,7 +8,7 @@ Winner of the Project Contest
 ![image2](https://raw.githubusercontent.com/guanyuqing/EuropeanSoccer/master/2.png)
 ![image3](https://raw.githubusercontent.com/guanyuqing/EuropeanSoccer/master/3.png)
 
-Data source:
+Data sources:
   - http://en.wikipedia.org/
   - https://github.com/openfootball
   - https://github.com/footballcsv
