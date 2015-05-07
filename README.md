@@ -1,6 +1,7 @@
 # CS4111 Project 1
 
 Authors: Yuqing Guan, Xiaofan Yang
+
 Winner of the Project Contest
 
 ![image1](https://raw.githubusercontent.com/guanyuqing/EuropeanSoccer/master/1.png)
