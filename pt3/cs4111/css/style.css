@@ -1,0 +1,223 @@
+body {
+  padding-top: 70px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+.table > tbody > tr > td.field-name, .navbar-brand, .panel-title, caption, .modal-title {
+  font-weight:bold;
+}
+
+footer {
+  padding: 40px 0;
+  color: #333;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+	opacity:0.8;
+	font-size:1.2em;
+}
+
+footer p:last-child {
+  margin-bottom: 0;
+}
+
+tbody#squad, tbody#standing, td#captain, td.match-team {
+	cursor:pointer;
+}
+
+td#captain:hover, td.match-team:hover {
+  background-color: rgba(150, 150, 150, .4);
+}
+
+textarea#comment-content {
+	resize: none;
+}
+
+img.national-flag {
+	width:23px;
+	height:15px;
+	
+	border:1px solid gray;
+	margin-right:5px;
+}
+
+body { 
+	background-position:center;
+	background-repeat:no-repeat;
+	
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:cover;
+}
+
+.navbar-default {
+	opacity:0.95;
+}
+
+.jumbotron {
+	padding:15px;
+	background-color:rgba(255, 255, 255, .75);
+	border:1px solid rgba(200, 200, 200, .9);
+}
+
+.panel {
+	background-color:rgba(255, 255, 255, .9);
+	margin-bottom:40px;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(200, 200, 200, .4);
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: rgba(150, 150, 150, .4);
+}
+
+.table > thead > tr > th {
+  border-bottom: 2px solid rgba(200, 200, 200, .95);
+}
+
+table#table-squad > thead > tr > th {
+	cursor:pointer;
+}
+
+.table > tbody#squad > tr > td, .table > tbody#previous-comment > tr > td {
+	border-top: 0px;
+	vertical-align:middle;
+}
+
+.table > caption {
+  border-bottom: 1px solid rgba(200, 200, 200, .95);
+}
+
+.modal-content {
+	background-color:rgba(255, 255, 255, .9);
+}
+
+.rating-xs {
+	font-size:1.2em;
+}
+
+.rating-sm {
+	font-size:1.5em;
+}
+
+.star-rating .clear-rating, .star-rating-rtl .clear-rating {
+	font-size: 80%;
+	vertical-align:middle;
+}
+
+.star-rating .caption, .star-rating-rtl .caption {
+	font-size:90%;
+	vertical-align:top;
+}
+
+tbody#squad .rating-disabled {
+	cursor:pointer;
+}
+
+tbody#previous-comment .rating-disabled {
+	cursor:default;
+}
+
+.rating-stars {
+	cursor:pointer;
+}
+
+.rating-disabled .rating-stars {
+	cursor:default;
+}
+
+caption {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.navbar > .container-fluid {
+	vertical-align:center;
+}
+
+.navbar-brand {
+	height:100%;
+	margin:10px auto;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+
+.navbar-header img {
+	height:32px;
+	margin-right:5px;
+}
+
+.jumbotron-logo {
+	text-align:right;
+}
+
+.jumbotron-logo img {
+	height:120px;
+	margin:15px auto;
+}
+
+.menu-logo {
+	height:20px;
+	margin-right:5px;
+}
+
+.table-logo {
+	height:20px;
+	margin-right:5px;
+}
+
+#player-photo {
+	height:196px;
+}
+
+#match-date-tip {
+	color:#777;
+	font-weight:bold;
+	height:34px;
+	line-height:1.42857;
+	padding-top:6px;
+}
+
+td.home-team, td.away-rank {
+	text-align:right;
+}
+
+th.standing-num, td.match-goal {
+	text-align:center;
+}
+
+.table > tbody > tr > td.standing-num {
+	text-align:right;
+	padding-right:35px;
+}
+
+.table-hover > tbody > tr.up {
+  background-color: rgba(110, 110, 210, .4);
+}
+
+.table-hover > tbody > tr.up:hover {
+  background-color: rgba(110, 110, 210, .6);
+}
+
+.table-hover > tbody > tr.down {
+  background-color: rgba(210, 100, 100, .4);
+}
+
+.table-hover > tbody > tr.down:hover {
+  background-color: rgba(210, 100, 100, .6);
+}

@@ -1,0 +1,174 @@
+Team Members:
+	Yuqing Guan, yg2392
+	Xiaofan Yang, xy2251
+
+Please use 'mysql -u username -p cs4111 --default-character-set=utf8' to launch the MySQL commandline.
+Otherwise, some characters like 'é' and 'ï' will be displayed as '?' due to the encoding issues.
+
+Query 1:
+
+List a standard standing table for English Premier League.
+
+Statement:
+
+SELECT
+	@rank := @rank + 1 AS RANK,
+	name AS NAME,
+	goals_for AS GF,
+	goals_against AS GA,
+	goals_for - goals_against AS GD,
+	win AS W,
+	draw AS D,
+	lose AS L,
+	win * 3 + draw AS PTS
+FROM
+	Clubs C, (SELECT @rank := 0) T
+WHERE
+	lid = 1
+ORDER BY PTS DESC;
+
+Result:
+
++------+----------------------+----+----+-----+----+----+----+-----+
+| RANK | NAME                 | GF | GA | GD  | W  | D  | L  | PTS |
++------+----------------------+----+----+-----+----+----+----+-----+
+|    1 | Chelsea              | 56 | 22 |  34 | 18 |  6 |  2 |  60 |
+|    2 | Manchester City      | 56 | 25 |  31 | 16 |  7 |  3 |  55 |
+|    3 | Arsenal              | 49 | 29 |  20 | 14 |  6 |  6 |  48 |
+|    4 | Manchester United    | 44 | 26 |  18 | 13 |  8 |  5 |  47 |
+|    5 | Southampton          | 38 | 19 |  19 | 14 |  4 |  8 |  46 |
+|    6 | Liverpool            | 38 | 29 |   9 | 13 |  6 |  7 |  45 |
+|    7 | Tottenham Hotspur    | 41 | 36 |   5 | 13 |  5 |  8 |  44 |
+|    8 | West Ham United      | 38 | 30 |   8 | 10 |  9 |  7 |  39 |
+|    9 | Swansea City         | 30 | 34 |  -4 | 10 |  7 |  9 |  37 |
+|   10 | Stoke City           | 30 | 34 |  -4 | 10 |  6 | 10 |  36 |
+|   11 | Newcastle United     | 31 | 42 | -11 |  8 |  8 | 10 |  32 |
+|   12 | Everton              | 33 | 37 |  -4 |  6 | 10 | 10 |  28 |
+|   13 | West Bromwich Albion | 24 | 34 | -10 |  6 |  9 | 11 |  27 |
+|   14 | Crystal Palace       | 28 | 37 |  -9 |  6 |  9 | 11 |  27 |
+|   15 | Hull City            | 25 | 35 | -10 |  6 |  8 | 12 |  26 |
+|   16 | Sunderland           | 22 | 36 | -14 |  4 | 13 |  9 |  25 |
+|   17 | Aston Villa          | 13 | 36 | -23 |  5 |  7 | 14 |  22 |
+|   18 | Burnley              | 25 | 44 | -19 |  4 | 10 | 12 |  22 |
+|   19 | Queens Park Rangers  | 27 | 45 | -18 |  6 |  4 | 16 |  22 |
+|   20 | Leicester City       | 24 | 42 | -18 |  4 |  6 | 16 |  18 |
++------+----------------------+----+----+-----+----+----+----+-----+
+
+Query 2:
+
+Ranking players of Chelsea FC by their average ratings.
+(For players without comments with ratings, their ratings are the default value, 3.)
+
+Statement:
+
+SELECT
+	P.no AS NO,
+	P.name AS NAME,
+	IF (
+		ISNULL(C.rating),
+		3.00,
+		TRUNCATE(C.rating, 2)
+	) AS RATING
+FROM
+	Players P
+	LEFT JOIN (
+		SELECT pid, AVG(rating) AS rating
+		FROM Comments
+		GROUP BY pid
+	) C
+	ON P.pid = C.pid
+WHERE
+	P.clubid = 4
+ORDER BY RATING DESC;
+
+Result:
+
++----+---------------------+--------+
+| NO | NAME                | RATING |
++----+---------------------+--------+
+| 26 | John Terry          |   5.00 |
+| 11 | Didier Drogba       |   5.00 |
+| 46 | Jamal Blackman      |   4.66 |
+|  1 | Petr Cech           |   4.33 |
+| 10 | Eden Hazard         |   4.00 |
+| 12 | John Obi Mikel      |   4.00 |
+|  2 | Branislav Ivanovic  |   4.00 |
+| 36 | Ruben Loftus-Cheek  |   4.00 |
+|  4 | Cesc Fàbregas       |   4.00 |
+| 23 | Juan Cuadrado       |   3.00 |
+|  6 | Nathan Aké          |   3.00 |
+| 19 | Diego Costa         |   3.00 |
+| 34 | Lewis Baker         |   3.00 |
+|  3 | Filipe Luís         |   3.00 |
+|  8 | Oscar               |   3.00 |
+| 22 | Willian             |   3.00 |
+| 37 | Isaiah Brown        |   3.00 |
+|  5 | Kurt Zouma          |   3.00 |
+| 18 | Loïc Rémy           |   3.00 |
+| 31 | Andreas Christensen |   3.00 |
+| 24 | Gary Cahill         |   3.00 |
+|  7 | Ramires             |   3.00 |
+| 21 | Nemanja Matic       |   3.00 |
+| 13 | Thibaut Courtois    |   3.00 |
+| 28 | César Azpilicueta   |   3.00 |
++----+---------------------+--------+
+
+Query 3:
+
+List all clubs that will be relegated if they remain in the current positions of their leagues.
+
+Statement:
+
+SELECT 
+	L.name AS LEAGUE,
+	RANK, CLUB, PTS
+FROM
+	Leagues L,
+	(
+		SELECT
+			@rank := IF (
+				lid = @oldlid,
+				@rank + 1,
+				1
+			) AS RANK,
+			name AS CLUB,
+			win * 3 + draw PTS,
+			@oldlid := lid AS lid
+		FROM Clubs, (SELECT @rank := 0, @oldlid := 0) T0
+		ORDER BY lid, PTS DESC
+	) T1,
+	(
+		SELECT lid, COUNT(clubid) AS count
+		FROM Clubs
+		GROUP BY lid
+	) T2
+WHERE
+	L.lid = T1.lid
+	AND T1.lid = T2.lid
+	AND T1.RANK + L.no_of_downgrade > T2.count
+ORDER BY L.lid, T1.RANK;
+
+Result:
+
++------------------------------+------+---------------------+-----+
+| LEAGUE                       | RANK | CLUB                | PTS |
++------------------------------+------+---------------------+-----+
+| Premier League               |   18 | Burnley             |  22 |
+| Premier League               |   19 | Queens Park Rangers |  22 |
+| Premier League               |   20 | Leicester City      |  18 |
+| Serie A                      |   18 | Cagliari            |  20 |
+| Serie A                      |   19 | Cesena              |  16 |
+| Serie A                      |   20 | Parma               |  11 |
+| La Liga                      |   18 | Granada             |  19 |
+| La Liga                      |   19 | Levante             |  19 |
+| La Liga                      |   20 | Córdoba             |  18 |
+| Football League Championship |   22 | Millwall            |  31 |
+| Football League Championship |   23 | Wigan Athletic      |  25 |
+| Football League Championship |   24 | Blackpool           |  22 |
+| Bundesliga                   |   16 | Freiburg            |  22 |
+| Bundesliga                   |   17 | Hertha Berlin       |  21 |
+| Bundesliga                   |   18 | Stuttgart           |  18 |
+| Ligue 1                      |   18 | Evian               |  26 |
+| Ligue 1                      |   19 | Lens                |  22 |
+| Ligue 1                      |   20 | Metz                |  22 |
++------------------------------+------+---------------------+-----+
