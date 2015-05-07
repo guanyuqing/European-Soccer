@@ -9,6 +9,7 @@ CS4111 Project 1, Winner of the [Project Contest](http://www.cs.columbia.edu/~bi
 ![image3](3.png)
 
 Data sources:
-  - http://en.wikipedia.org/
+  - http://en.wikipedia.org
   - https://github.com/openfootball
   - https://github.com/footballcsv
+  - http://www.football-data.co.uk
