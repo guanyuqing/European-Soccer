@@ -13,3 +13,5 @@ Data sources:
   - https://github.com/openfootball
   - https://github.com/footballcsv
   - http://www.football-data.co.uk
+
+Completed within 3 days
