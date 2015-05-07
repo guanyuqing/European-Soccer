@@ -1,8 +1,8 @@
-# CS4111 Project 1
+# European Soccer Information System
 
 Authors: Yuqing Guan, Xiaofan Yang
 
-Winner of the Project Contest
+CS4111 Project 1, Winner of the Project Contest
 
 ![image1](https://raw.githubusercontent.com/guanyuqing/EuropeanSoccer/master/1.png)
 ![image2](https://raw.githubusercontent.com/guanyuqing/EuropeanSoccer/master/2.png)
