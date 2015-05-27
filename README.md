@@ -2,7 +2,7 @@
 
 Authors: Yuqing Guan, Xiaofan Yang
 
-CS4111 Project 1, Winner of the [Project Contest](http://www.cs.columbia.edu/~biliris/4111/current/contest.html)
+CS4111 Project 1, Winner of the [Project Contest](http://www.cs.columbia.edu/~biliris/4111/15s/contest.html)
 
 ![image1](1.png)
 ![image2](2.png)
